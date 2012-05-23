@@ -16,7 +16,7 @@ h3. Building
 
 Requirements - Adobe Air SDK 3.1 or later, XCode IDE
 
-* Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/CanOpenUrlIosExtension folder in the project.
+* Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/KeychainIosExtension folder in the project.
 * Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the properties in this file to match your system.
 ** A certificate is required by the build script. This may be a self-signed certificate created by Adobe Air. This should not be an Apple developer certificate.
 * Run the ant build script build.xml. This creates the native extension and default swc file inside the bin folder.
