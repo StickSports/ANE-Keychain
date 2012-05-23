@@ -31,7 +31,7 @@ h3. Using the extension
 
 h4. To store a value in the keychain -
 
-@Keychain.insertOrUpdate( key : String, value ; String ) : int@
+@Keychain.insertOrUpdate( key : String, value : String ) : int@
 
 If the key already exists in the keychain, the value will be set to the new value. If the key doesn't exist, the key will be created and the value set.
 
@@ -39,7 +39,7 @@ The return value is an integer indicating success (KeychainErrors.success) or fa
 
 h4. To store a value in the keychain only if it doesn't exist already -
 
-@Keychain.insert( key : String, value ; String ) : int@
+@Keychain.insert( key : String, value : String ) : int@
 
 If the key already exists in the keychain, the insert will fail and the value for that key will not be altered.
 
@@ -47,7 +47,7 @@ The return value is an integer indicating success (KeychainErrors.success) or fa
 
 h4. To update a value in the keychain only if it does exist already -
 
-@Keychain.update( key : String, value ; String ) : int@
+@Keychain.update( key : String, value : String ) : int@
 
 If the key already exists in the keychain, the value is updated. If the key does not already exist, the update fails.
 
