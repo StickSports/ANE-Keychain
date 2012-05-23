@@ -1,0 +1,246 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		79AA01611552B7AF003F5640 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AA01601552B7AF003F5640 /* Foundation.framework */; };
+		79AA016F1552B983003F5640 /* KeychainIosExtension-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 79AA016D1552B983003F5640 /* KeychainIosExtension-Prefix.pch */; };
+		79AA01701552B983003F5640 /* KeychainIosExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AA016E1552B983003F5640 /* KeychainIosExtension.m */; };
+		79AA01731552BA03003F5640 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AA01711552B9D0003F5640 /* Security.framework */; };
+		79AA01781552BA61003F5640 /* FlashRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 79AA01741552BA61003F5640 /* FlashRuntimeExtensions.h */; };
+		79AA01791552BA61003F5640 /* FRETypeConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 79AA01751552BA61003F5640 /* FRETypeConversion.h */; };
+		79AA017A1552BA61003F5640 /* FRETypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AA01761552BA61003F5640 /* FRETypeConversion.m */; };
+		79AA017E1552C549003F5640 /* KeychainAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 79AA017C1552C549003F5640 /* KeychainAccessor.h */; };
+		79AA017F1552C549003F5640 /* KeychainAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AA017D1552C549003F5640 /* KeychainAccessor.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		79AA015D1552B7AF003F5640 /* libKeychainIosExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKeychainIosExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		79AA01601552B7AF003F5640 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		79AA016D1552B983003F5640 /* KeychainIosExtension-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KeychainIosExtension-Prefix.pch"; sourceTree = "<group>"; };
+		79AA016E1552B983003F5640 /* KeychainIosExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainIosExtension.m; sourceTree = "<group>"; };
+		79AA01711552B9D0003F5640 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		79AA01741552BA61003F5640 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
+		79AA01751552BA61003F5640 /* FRETypeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRETypeConversion.h; sourceTree = "<group>"; };
+		79AA01761552BA61003F5640 /* FRETypeConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRETypeConversion.m; sourceTree = "<group>"; };
+		79AA017C1552C549003F5640 /* KeychainAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainAccessor.h; sourceTree = "<group>"; };
+		79AA017D1552C549003F5640 /* KeychainAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainAccessor.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		79AA015A1552B7AF003F5640 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79AA01611552B7AF003F5640 /* Foundation.framework in Frameworks */,
+				79AA01731552BA03003F5640 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79AA01521552B7AE003F5640 = {
+			isa = PBXGroup;
+			children = (
+				79AA016D1552B983003F5640 /* KeychainIosExtension-Prefix.pch */,
+				79AA01741552BA61003F5640 /* FlashRuntimeExtensions.h */,
+				79AA017C1552C549003F5640 /* KeychainAccessor.h */,
+				79AA017D1552C549003F5640 /* KeychainAccessor.m */,
+				79AA01751552BA61003F5640 /* FRETypeConversion.h */,
+				79AA01761552BA61003F5640 /* FRETypeConversion.m */,
+				79AA016E1552B983003F5640 /* KeychainIosExtension.m */,
+				79AA015F1552B7AF003F5640 /* Frameworks */,
+				79AA015E1552B7AF003F5640 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		79AA015E1552B7AF003F5640 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79AA015D1552B7AF003F5640 /* libKeychainIosExtension.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		79AA015F1552B7AF003F5640 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79AA01711552B9D0003F5640 /* Security.framework */,
+				79AA01601552B7AF003F5640 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		79AA015B1552B7AF003F5640 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79AA016F1552B983003F5640 /* KeychainIosExtension-Prefix.pch in Headers */,
+				79AA01781552BA61003F5640 /* FlashRuntimeExtensions.h in Headers */,
+				79AA01791552BA61003F5640 /* FRETypeConversion.h in Headers */,
+				79AA017E1552C549003F5640 /* KeychainAccessor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		79AA015C1552B7AF003F5640 /* KeychainIosExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79AA016A1552B7AF003F5640 /* Build configuration list for PBXNativeTarget "KeychainIosExtension" */;
+			buildPhases = (
+				79AA01591552B7AF003F5640 /* Sources */,
+				79AA015A1552B7AF003F5640 /* Frameworks */,
+				79AA015B1552B7AF003F5640 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeychainIosExtension;
+			productName = KeychainIosExtension;
+			productReference = 79AA015D1552B7AF003F5640 /* libKeychainIosExtension.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		79AA01541552B7AE003F5640 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Stick Sports Ltd";
+			};
+			buildConfigurationList = 79AA01571552B7AE003F5640 /* Build configuration list for PBXProject "KeychainIosExtension" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 79AA01521552B7AE003F5640;
+			productRefGroup = 79AA015E1552B7AF003F5640 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79AA015C1552B7AF003F5640 /* KeychainIosExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		79AA01591552B7AF003F5640 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79AA01701552B983003F5640 /* KeychainIosExtension.m in Sources */,
+				79AA017A1552BA61003F5640 /* FRETypeConversion.m in Sources */,
+				79AA017F1552C549003F5640 /* KeychainAccessor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		79AA01681552B7AF003F5640 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		79AA01691552B7AF003F5640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		79AA016B1552B7AF003F5640 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/KeychainIosExtension.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeychainIosExtension-Prefix.pch";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		79AA016C1552B7AF003F5640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/KeychainIosExtension.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeychainIosExtension-Prefix.pch";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79AA01571552B7AE003F5640 /* Build configuration list for PBXProject "KeychainIosExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79AA01681552B7AF003F5640 /* Debug */,
+				79AA01691552B7AF003F5640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79AA016A1552B7AF003F5640 /* Build configuration list for PBXNativeTarget "KeychainIosExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79AA016B1552B7AF003F5640 /* Debug */,
+				79AA016C1552B7AF003F5640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 79AA01541552B7AE003F5640 /* Project object */;
+}

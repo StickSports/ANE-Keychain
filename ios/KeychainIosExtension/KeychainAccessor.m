@@ -1,0 +1,77 @@
+//
+//  KeychainAccessor.m
+//  KeychainIosExtension
+//
+//  Created by Richard Lord on 03/05/2012.
+//  Copyright (c) 2012 Stick Sports Ltd. All rights reserved.
+//
+
+#import "KeychainAccessor.h"
+
+// TODO: Access Group - kSecAttrAccessGroup
+
+@implementation KeychainAccessor
+
+-(NSMutableDictionary*)queryDictionaryForKey:(NSString*)key
+{
+    NSMutableDictionary* query = [NSMutableDictionary dictionary];
+    
+    [query setObject:(id)kSecClassGenericPassword  forKey:(id)kSecClass];
+    [query setObject:(id)kSecAttrAccessibleWhenUnlocked forKey:(id)kSecAttrAccessible];
+    [query setObject:key forKey:(id)kSecAttrService];
+    
+    return query;
+}
+
+-(OSStatus)insertObject:(NSString*)obj forKey:(NSString*)key
+{
+    NSMutableDictionary* query = [self queryDictionaryForKey:key];
+    
+    [query setObject:[obj dataUsingEncoding:NSUTF8StringEncoding] forKey:(id)kSecValueData];
+    
+    return SecItemAdd ((CFDictionaryRef) query, NULL);
+}
+
+-(OSStatus)updateObject:(NSString*)obj forKey:(NSString*) key
+{
+    NSMutableDictionary* query = [self queryDictionaryForKey:key];
+    
+    NSMutableDictionary* change = [NSMutableDictionary dictionary];
+    [change setObject:[obj dataUsingEncoding:NSUTF8StringEncoding] forKey:(id) kSecValueData];
+    
+    return SecItemUpdate ( (CFDictionaryRef) query, (CFDictionaryRef) change);
+}
+
+-(OSStatus)insertOrUpdateObject:(NSString*) value forKey:(NSString*)key
+{
+    OSStatus status = [self insertObject:value forKey:key];
+    if( status == errSecDuplicateItem )
+    {
+        status = [self updateObject:value forKey:key];
+    }
+    return status;
+}
+
+-(NSString*)objectForKey:(NSString*)key
+{
+    NSMutableDictionary* query = [self queryDictionaryForKey:key];
+    [query setObject:(id) kCFBooleanTrue forKey:(id) kSecReturnData];
+    
+    NSData* data = nil;
+    OSStatus status = SecItemCopyMatching ( (CFDictionaryRef) query, (CFTypeRef*) &data );
+    
+    if( status != errSecSuccess || !data )
+    {
+        return nil;
+    }
+    
+    NSString* value = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    return value;    
+}
+
+-(OSStatus)deleteObjectForKey:(NSString*)key
+{
+    NSMutableDictionary* query = [self queryDictionaryForKey:key];
+    return SecItemDelete( (CFDictionaryRef) query );
+}
+@end

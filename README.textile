@@ -1,0 +1,98 @@
+h1. Air Native Extension for iOS - Keychain
+
+This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensions-for-air.html to read and write to the device's keychain.
+
+This extension enables reading data from and writing data to the iOS device's keychain. Currently, this extension stores data as strings, and will only store them in the default access group for your application.
+
+h3. Version
+
+This is version 0.4 of this extension.
+
+h3. Binary files
+
+The bin folder contains the compiled extension and the default swc, which can be used for local testing if required by your development environment (Flash Builder shouldn't need it, but other IDEs may).
+
+h3. Building
+
+Requirements - Adobe Air SDK 3.1 or later, XCode IDE
+
+* Add the FlashRuntimeExtensions.h file from the Adobe Air sdk to the ios/CanOpenUrlIosExtension folder in the project.
+* Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the properties in this file to match your system.
+** A certificate is required by the build script. This may be a self-signed certificate created by Adobe Air. This should not be an Apple developer certificate.
+* Run the ant build script build.xml. This creates the native extension and default swc file inside the bin folder.
+
+h3. The test project
+
+A simple test project is included for testing the extension. To build this air project
+
+* Run the ant build script test/build.xml. This creates the test ipa inside the test/bin folder.
+
+h3. Using the extension
+
+h4. To store a value in the keychain -
+
+@Keychain.insertOrUpdate( key : String, value ; String ) : int@
+
+If the key already exists in the keychain, the value will be set to the new value. If the key doesn't exist, the key will be created and the value set.
+
+The return value is an integer indicating success (KeychainErrors.success) or failure (any other value, see the KeychainErrors class for the possible errors).
+
+h4. To store a value in the keychain only if it doesn't exist already -
+
+@Keychain.insert( key : String, value ; String ) : int@
+
+If the key already exists in the keychain, the insert will fail and the value for that key will not be altered.
+
+The return value is an integer indicating success (KeychainErrors.success) or failure (any other value, see the KeychainErrors class for the possible errors).
+
+h4. To update a value in the keychain only if it does exist already -
+
+@Keychain.update( key : String, value ; String ) : int@
+
+If the key already exists in the keychain, the value is updated. If the key does not already exist, the update fails.
+
+The return value is an integer indicating success (KeychainErrors.success) or failure (any other value, see the KeychainErrors class for the possible errors).
+
+h4. To retrieve a value from the keychain -
+
+@Keychain.get( key : String ) : String@
+
+The return value is the value corresponding to the key in the keychain. If the key does not exist in teh keychain, the returned value is null.
+
+h4. To delete a value from the keychain -
+
+@Keychain.remove( key : String ) : int@
+
+The return value is an integer indicating success (KeychainErrors.success) or failure (any other value, see the KeychainErrors class for the possible errors).
+
+h3. Example code
+
+You can see the feature in action in the source code of the test project.
+
+h3. Compiling your project
+
+This is an Air 3.1 extension. Specify the path to the iPhone SDK when compiling the project, using the functionality built in to your IDE or the platformsdk parameter if building with adt from the command line or a build script.
+
+h3. Developers
+
+* "Stick Sports":http://www.sticksports.com/
+
+h2. License
+
+Air Native Extension for iOS Keychain
+.....................................
+
+Author: Richard Lord
+Owner: Stick Sports Ltd.
+http://www.sticksports.com
+
+Copyright (c) 2011, Stick Sports Ltd.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+* Neither the name of Stick Sports Ltd. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
