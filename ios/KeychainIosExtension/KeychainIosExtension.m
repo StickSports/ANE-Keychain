@@ -15,17 +15,17 @@
 
 #define MAP_FUNCTION(fn, data) { (const uint8_t*)(#fn), (data), &(fn) }
 
-KeychainAccessor* accessor;
+KeychainAccessor* keychainAccessor;
 
-DEFINE_ANE_FUNCTION( insertString )
+DEFINE_ANE_FUNCTION( insertStringInKeychain )
 {
     NSString* key;
-    if( FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
+    if( keychain_FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
     
     NSString* value;
-    if( FREGetObjectAsString( argv[1], &value ) != FRE_OK ) return NULL;
+    if( keychain_FREGetObjectAsString( argv[1], &value ) != FRE_OK ) return NULL;
     
-    OSStatus status = [accessor insertObject:value forKey:key];
+    OSStatus status = [keychainAccessor insertObject:value forKey:key];
     
     FREObject result;
     if ( FRENewObjectFromInt32( status, &result ) == FRE_OK )
@@ -35,15 +35,15 @@ DEFINE_ANE_FUNCTION( insertString )
     return NULL;
 }
 
-DEFINE_ANE_FUNCTION( updateString )
+DEFINE_ANE_FUNCTION( updateStringInKeychain )
 {
     NSString* key;
-    if( FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
+    if( keychain_FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
     
     NSString* value;
-    if( FREGetObjectAsString( argv[1], &value ) != FRE_OK ) return NULL;
+    if( keychain_FREGetObjectAsString( argv[1], &value ) != FRE_OK ) return NULL;
     
-    OSStatus status = [accessor updateObject:value forKey:key];
+    OSStatus status = [keychainAccessor updateObject:value forKey:key];
     
     FREObject result;
     if ( FRENewObjectFromInt32( status, &result ) == FRE_OK )
@@ -53,15 +53,15 @@ DEFINE_ANE_FUNCTION( updateString )
     return NULL;
 }
 
-DEFINE_ANE_FUNCTION( insertOrUpdateString )
+DEFINE_ANE_FUNCTION( insertOrUpdateStringInKeychain )
 {
     NSString* key;
-    if( FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
+    if( keychain_FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
     
     NSString* value;
-    if( FREGetObjectAsString( argv[1], &value ) != FRE_OK ) return NULL;
+    if( keychain_FREGetObjectAsString( argv[1], &value ) != FRE_OK ) return NULL;
     
-    OSStatus status = [accessor insertOrUpdateObject:value forKey:key];
+    OSStatus status = [keychainAccessor insertOrUpdateObject:value forKey:key];
     
     FREObject result;
     if ( FRENewObjectFromInt32( status, &result ) == FRE_OK )
@@ -71,12 +71,12 @@ DEFINE_ANE_FUNCTION( insertOrUpdateString )
     return NULL;
 }
 
-DEFINE_ANE_FUNCTION( fetchString )
+DEFINE_ANE_FUNCTION( fetchStringFromKeychain )
 {
     NSString* key;
-    if( FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
+    if( keychain_FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
     
-    NSString* value = [accessor objectForKey:key];
+    NSString* value = [keychainAccessor objectForKey:key];
     
     if( value == nil )
     {
@@ -84,19 +84,19 @@ DEFINE_ANE_FUNCTION( fetchString )
     }
     
     FREObject asValue;
-    if ( FRENewObjectFromString( value, &asValue ) == FRE_OK )
+    if ( keychain_FRENewObjectFromString( value, &asValue ) == FRE_OK )
     {
         return asValue;
     }
     return NULL;
 }
 
-DEFINE_ANE_FUNCTION( deleteString )
+DEFINE_ANE_FUNCTION( deleteStringFromKeychain )
 {
     NSString* key;
-    if( FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
+    if( keychain_FREGetObjectAsString( argv[0], &key ) != FRE_OK ) return NULL;
     
-    OSStatus status = [accessor deleteObjectForKey:key];
+    OSStatus status = [keychainAccessor deleteObjectForKey:key];
     
     FREObject result;
     if ( FRENewObjectFromInt32( status, &result ) == FRE_OK )
@@ -110,11 +110,11 @@ void KeychainContextInitializer( void* extData, const uint8_t* ctxType, FREConte
 {
     static FRENamedFunction functionMap[] =
     {
-        MAP_FUNCTION( insertString, NULL ),
-        MAP_FUNCTION( updateString, NULL ),
-        MAP_FUNCTION( insertOrUpdateString, NULL ),
-        MAP_FUNCTION( fetchString, NULL ),
-        MAP_FUNCTION( deleteString, NULL )
+        MAP_FUNCTION( insertStringInKeychain, NULL ),
+        MAP_FUNCTION( updateStringInKeychain, NULL ),
+        MAP_FUNCTION( insertOrUpdateStringInKeychain, NULL ),
+        MAP_FUNCTION( fetchStringFromKeychain, NULL ),
+        MAP_FUNCTION( deleteStringFromKeychain, NULL )
     };
     
 	*numFunctionsToSet = sizeof( functionMap ) / sizeof( FRENamedFunction );
@@ -132,7 +132,7 @@ void KeychainExtensionInitializer( void** extDataToSet, FREContextInitializer* c
     *ctxInitializerToSet = &KeychainContextInitializer;
     *ctxFinalizerToSet = &KeychainContextFinalizer;
     
-    accessor = [[KeychainAccessor alloc] init];
+    keychainAccessor = [[KeychainAccessor alloc] init];
 }
 
 void KeychainExtensionFinalizer()

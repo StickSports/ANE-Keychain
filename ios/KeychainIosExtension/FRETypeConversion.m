@@ -8,7 +8,7 @@
 
 #import "FRETypeConversion.h"
 
-FREResult FREGetObjectAsString( FREObject object, NSString** value )
+FREResult keychain_FREGetObjectAsString( FREObject object, NSString** value )
 {
     FREResult result;
     uint32_t length = 0;
@@ -21,7 +21,7 @@ FREResult FREGetObjectAsString( FREObject object, NSString** value )
     return FRE_OK;
 }
 
-FREResult FRENewObjectFromString( NSString* string, FREObject* asString )
+FREResult keychain_FRENewObjectFromString( NSString* string, FREObject* asString )
 {
     const char* utf8String = string.UTF8String;
     unsigned long length = strlen( utf8String );
