@@ -15,4 +15,10 @@
 -(NSString *)objectForKey:(NSString *)key;
 -(OSStatus)deleteObjectForKey:(NSString *)key;
 
+-(OSStatus)insertObject:(NSString*)obj forKey:(NSString*)key withAccessGroup:(NSString*)accessGroup;
+-(OSStatus)updateObject:(NSString *)obj forKey:(NSString *)key withAccessGroup:(NSString*)accessGroup;
+-(OSStatus)insertOrUpdateObject:(NSString *)obj forKey:(NSString *)key withAccessGroup:(NSString*)accessGroup;
+-(NSString *)objectForKey:(NSString *)key withAccessGroup:(NSString*)accessGroup;
+-(OSStatus)deleteObjectForKey:(NSString *)key withAccessGroup:(NSString*)accessGroup;
+
 @end

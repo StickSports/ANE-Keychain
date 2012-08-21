@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Stick Sports Ltd. All rights reserved.
 //
 
-#ifndef GameCenterIosExtension_FRETypeConversion_h
-#define GameCenterIosExtension_FRETypeConversion_h
+#ifndef KeychainIosExtension_FRETypeConversion_h
+#define KeychainIosExtension_FRETypeConversion_h
 
 #import "FlashRuntimeExtensions.h"
 

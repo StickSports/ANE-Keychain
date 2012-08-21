@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><application xmlns="http://ns.adobe.com/air/application/3.1">
 	<id>KeychainExtensionTest</id>
 	<filename>KeychainExtensionTest</filename>
-	<name>Dummy1</name>
-	<versionNumber>0.1.0</versionNumber>
-	<versionLabel>v0.1.0</versionLabel>
+	<name>Keychain Test</name>
+	<versionNumber>0.2.0</versionNumber>
+	<versionLabel>v0.2.0</versionLabel>
 	<initialWindow>
 		<content>KeychainExtensionTest.swf</content>
 		<visible>true</visible>
@@ -33,6 +33,15 @@
 				</array>
 			]]>
 		</InfoAdditions>
+		<Entitlements>
+			<![CDATA[
+				<key>keychain-access-groups</key>
+				<array>
+					<string>5UAS77B3P7.KeychainExtensionTest</string>
+					<string>5UAS77B3P7.*</string>
+				</array>
+			]]>
+		</Entitlements>
 		<requestedDisplayResolution>high</requestedDisplayResolution>
 	</iPhone>
 </application>

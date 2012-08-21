@@ -2,11 +2,11 @@ h1. Air Native Extension for iOS - Keychain
 
 This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensions-for-air.html to read and write to the device's keychain.
 
-This extension enables reading data from and writing data to the iOS device's keychain. Currently, this extension stores data as strings, and will only store them in the default access group for your application.
+This extension enables reading data from and writing data to the iOS device's keychain. This extension stores data as strings.
 
 h3. Version
 
-This is version 0.4 of this extension.
+This is version 0.5 of this extension.
 
 h3. Binary files
 
@@ -25,45 +25,58 @@ h3. The test project
 
 A simple test project is included for testing the extension. To build this air project
 
+* Set the access groups in the KeychainExtensionTest-app.xml file.
+* Set the test access group in the KeychainExtensionTest.as file.
+* Create a copy of the build/example.build.config file in the build folder, calling it build.config and change the properties in this file to match your system.
 * Run the ant build script test/build.xml. This creates the test ipa inside the test/bin folder.
 
 h3. Using the extension
 
 h4. To store a value in the keychain -
 
-@Keychain.insertOrUpdate( key : String, value : String ) : int@
+@Keychain.insertOrUpdate( key : String, value : String, accessGroup : String = null ) : int@
 
 If the key already exists in the keychain, the value will be set to the new value. If the key doesn't exist, the key will be created and the value set.
 
 The return value is an integer indicating success (KeychainErrors.success) or failure (any other value, see the KeychainErrors class for the possible errors).
 
+If accessGroup is not specified then the first accessGroup in your app's entitlements is used, or the default accessGroup if none are specified.
+
 h4. To store a value in the keychain only if it doesn't exist already -
 
-@Keychain.insert( key : String, value : String ) : int@
+@Keychain.insert( key : String, value : String, accessGroup : String = null ) : int@
 
 If the key already exists in the keychain, the insert will fail and the value for that key will not be altered.
 
 The return value is an integer indicating success (KeychainErrors.success) or failure (any other value, see the KeychainErrors class for the possible errors).
 
+If accessGroup is not specified then the first accessGroup in your app's entitlements is used, or the default accessGroup if none are specified.
+
 h4. To update a value in the keychain only if it does exist already -
 
-@Keychain.update( key : String, value : String ) : int@
+@Keychain.update( key : String, value : String, accessGroup : String = null ) : int@
 
 If the key already exists in the keychain, the value is updated. If the key does not already exist, the update fails.
 
 The return value is an integer indicating success (KeychainErrors.success) or failure (any other value, see the KeychainErrors class for the possible errors).
 
+If accessGroup is not specified then the first accessGroup in your app's entitlements is used, or the default accessGroup if none are specified.
+
 h4. To retrieve a value from the keychain -
 
-@Keychain.get( key : String ) : String@
+@Keychain.get( key : String, accessGroup : String = null ) : String@
 
-The return value is the value corresponding to the key in the keychain. If the key does not exist in teh keychain, the returned value is null.
+The return value is the value corresponding to the key in the keychain. If the key does not exist in the keychain, the returned value is null.
+
+If accessGroup is not specified then all accessGroups in your app's entitlements are checked until a value is found.
 
 h4. To delete a value from the keychain -
 
-@Keychain.remove( key : String ) : int@
+@Keychain.remove( key : String, accessGroup : String = null ) : int@
 
 The return value is an integer indicating success (KeychainErrors.success) or failure (any other value, see the KeychainErrors class for the possible errors).
+
+If accessGroup is not specified then the value is deleted from all accessGroups in your app's entitlements.
 
 h3. Example code
 

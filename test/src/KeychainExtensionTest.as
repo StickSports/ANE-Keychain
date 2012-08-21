@@ -20,6 +20,8 @@
 		
 		private var buttonFormat : TextFormat;
 		
+		private var accessGroup : String = "5UAS77B3P7.*";
+		
 		public function KeychainExtensionTest()
 		{
 			shape = new Shape();
@@ -81,6 +83,36 @@
 			tf.y = 90;
 			tf.addEventListener( MouseEvent.MOUSE_DOWN, removeItem );
 			addChild( tf );
+			
+			tf = createButton( "insert ag" );
+			tf.x = 170;
+			tf.y = 90;
+			tf.addEventListener( MouseEvent.MOUSE_DOWN, insertItemAG );
+			addChild( tf );
+			
+			tf = createButton( "update ag" );
+			tf.x = 10;
+			tf.y = 130;
+			tf.addEventListener( MouseEvent.MOUSE_DOWN, updateItemAG );
+			addChild( tf );
+			
+			tf = createButton( "insert or update ag" );
+			tf.x = 170;
+			tf.y = 130;
+			tf.addEventListener( MouseEvent.MOUSE_DOWN, storeItemAG );
+			addChild( tf );
+			
+			tf = createButton( "get ag" );
+			tf.x = 10;
+			tf.y = 170;
+			tf.addEventListener( MouseEvent.MOUSE_DOWN, getItemAG );
+			addChild( tf );
+			
+			tf = createButton( "remove ag" );
+			tf.x = 170;
+			tf.y = 170;
+			tf.addEventListener( MouseEvent.MOUSE_DOWN, removeItemAG );
+			addChild( tf );
 		}
 		
 		private function createButton( label : String ) : TextField
@@ -140,6 +172,41 @@
 		{
 			feedback.text = "Keychain.remove( 'myKey' )";
 			var result : int = Keychain.remove( 'myKey' );
+			feedback.appendText( "\nresult = " + result );
+		}
+		
+		private function insertItemAG( event : MouseEvent ) : void
+		{
+			feedback.text = "Keychain.insert( 'myKey', 'myValue', '" + accessGroup + "' )";
+			var result : int = Keychain.insert( 'myKey', 'myValue', accessGroup );
+			feedback.appendText( "\nresult = " + result );
+		}
+		
+		private function updateItemAG( event : MouseEvent ) : void
+		{
+			feedback.text = "Keychain.update( 'myKey', 'myOtherValue', '" + accessGroup + "' )";
+			var result : int = Keychain.update( 'myKey', 'myOtherValue', accessGroup );
+			feedback.appendText( "\nresult = " + result );
+		}
+		
+		private function storeItemAG( event : MouseEvent ) : void
+		{
+			feedback.text = "Keychain.insertOrUpdate( 'myKey', 'yetAnotherValue', '" + accessGroup + "' )";
+			var result : int = Keychain.insertOrUpdate( 'myKey', 'yetAnotherValue', accessGroup );
+			feedback.appendText( "\nresult = " + result );
+		}
+		
+		private function getItemAG( event : MouseEvent ) : void
+		{
+			feedback.text = "Keychain.get( 'myKey', '" + accessGroup + "' )";
+			var value : String = Keychain.get( 'myKey', accessGroup );
+			feedback.appendText( "\nvalue = " + value );
+		}
+		
+		private function removeItemAG( event : MouseEvent ) : void
+		{
+			feedback.text = "Keychain.remove( 'myKey', '" + accessGroup + "' )";
+			var result : int = Keychain.remove( 'myKey', accessGroup );
 			feedback.appendText( "\nresult = " + result );
 		}
 		

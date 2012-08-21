@@ -14,34 +14,69 @@ package com.sticksports.nativeExtensions.keychain
 			}
 		}
 
-		public static function get( key : String ) : String
+		public static function get( key : String, accessGroup : String = null ) : String
 		{
 			init();
-			return extensionContext.call( NativeMethods.fetchString, key ) as String;
+			if( accessGroup )
+			{
+				return extensionContext.call( NativeMethods.fetchString, key, accessGroup ) as String;
+			}
+			else
+			{
+				return extensionContext.call( NativeMethods.fetchString, key ) as String;
+			}
 		}
 
-		public static function insert( key : String, value : String ) : int
+		public static function insert( key : String, value : String, accessGroup : String = null ) : int
 		{
 			init();
-			return extensionContext.call( NativeMethods.insertString, key, value ) as int;
+			if( accessGroup )
+			{
+				return extensionContext.call( NativeMethods.insertString, key, value, accessGroup ) as int;
+			}
+			else
+			{
+				return extensionContext.call( NativeMethods.insertString, key, value ) as int;
+			}
 		}
 
-		public static function update( key : String, value : String ) : int
+		public static function update( key : String, value : String, accessGroup : String = null ) : int
 		{
 			init();
-			return extensionContext.call( NativeMethods.updateString, key, value ) as int;
+			if( accessGroup )
+			{
+				return extensionContext.call( NativeMethods.updateString, key, value, accessGroup ) as int;
+			}
+			else
+			{
+				return extensionContext.call( NativeMethods.updateString, key, value ) as int;
+			}
 		}
 
-		public static function insertOrUpdate( key : String, value : String ) : int
+		public static function insertOrUpdate( key : String, value : String, accessGroup : String = null ) : int
 		{
 			init();
-			return extensionContext.call( NativeMethods.insertOrUpdateString, key, value ) as int;
+			if( accessGroup )
+			{
+				return extensionContext.call( NativeMethods.insertOrUpdateString, key, value, accessGroup ) as int;
+			}
+			else
+			{
+				return extensionContext.call( NativeMethods.insertOrUpdateString, key, value ) as int;
+			}
 		}
 
-		public static function remove( key : String ) : int
+		public static function remove( key : String, accessGroup : String = null ) : int
 		{
 			init();
-			return extensionContext.call( NativeMethods.deleteString, key ) as int;
+			if( accessGroup )
+			{
+				return extensionContext.call( NativeMethods.deleteString, key, accessGroup ) as int;
+			}
+			else
+			{
+				return extensionContext.call( NativeMethods.deleteString, key ) as int;
+			}
 		}
 	}
 }

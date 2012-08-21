@@ -6,7 +6,7 @@
 
 	<!-- Options that should be passed to the linker. Optional. -->
 	<linkerOptions>
-		<option>-ios_version_min 4.0</option>
+		<option>-ios_version_min 4.2</option>
 		<option>-framework Security</option>
 	</linkerOptions>
 

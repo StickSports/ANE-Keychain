@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Stick Sports Ltd. All rights reserved.
 //
 
-#import "FRETypeConversion.h"
+#import "KeychainFRETypeConversion.h"
 
 FREResult keychain_FREGetObjectAsString( FREObject object, NSString** value )
 {
