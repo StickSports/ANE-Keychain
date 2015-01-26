@@ -1,5 +1,7 @@
 h1. Air Native Extension for iOS - Keychain
 
+*Please note that we are no longer able to support this project and are not contributing to it.*
+
 This is an "Air native extension":http://www.adobe.com/devnet/air/native-extensions-for-air.html to read and write to the device's keychain.
 
 This extension enables reading data from and writing data to the iOS device's keychain. This extension stores data as strings.
